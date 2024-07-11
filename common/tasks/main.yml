@@ -5,7 +5,7 @@
   with_items:
        - git
        - mc
-       - python-pip
+       - python3-pip
 
 - name: Install docker-py
   become: true
