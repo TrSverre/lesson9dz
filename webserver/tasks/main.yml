@@ -1,2 +1,15 @@
 ---
 # tasks file for webserver
+- name: Pull Docker image from Docker Hub
+  docker_image:
+    name: trsverre/dz9
+    tag: latest
+- name: Run Docker container
+  docker_container:
+    name: prod
+    image: trsverre/dz9
+    state: started
+    ports:
+      - "8888:8080"
+  notify:
+    - restart docker

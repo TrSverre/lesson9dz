@@ -1,0 +1,14 @@
+- name: build server configuration
+  hosts: build
+  become: yes
+
+  roles:
+   - common
+   - building
+
+- name: prod server configuration
+  hosts: prod
+
+  roles:
+    - common
+    - webserver

@@ -1,2 +1,4 @@
 ---
 # defaults file for building
+dest_folder_git: /home/user/
+dest_folder_var: var/lib/tomcat9/webapps

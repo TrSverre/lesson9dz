@@ -1,2 +1,17 @@
 ---
 # tasks file for building
+- name: Copy Dockerfile into build node
+  copy: src=Dockerfile dest={{ dest_folder }}
+
+- name: Build image
+  docker_image:
+    path: /home/user
+    name: dz9
+    tag: latest
+
+- name: Tag image with Docker Hub repository name
+  docker_image:
+    name: dz9
+    tag: latest
+    repository: trsverre/dz9
+    push: yes
