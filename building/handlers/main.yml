@@ -1,2 +1,21 @@
 ---
 # handlers file for building
+- name: Build image
+  become: true
+  docker_image:
+    build: 
+      path: "{{ dest_folder_git }}"
+    name: dz9
+    tag: 1
+    source: build
+  listen: "Update Dockerfile"
+
+- name: Tag image with Docker Hub repository name
+  become: true
+  docker_image:
+    name: dz9
+    tag: 1
+    repository: trsverre/dz9
+    push: yes
+    source: local
+  listen: "Update Dockerfile"

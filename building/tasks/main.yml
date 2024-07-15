@@ -2,21 +2,4 @@
 # tasks file for building
 - name: Copy Dockerfile into build node
   copy: src=Dockerfile dest={{ dest_folder_git }}
-
-- name: Build image
-  become: true
-  docker_image:
-    build: 
-      path: "{{ dest_folder_git }}"
-    name: dz9
-    tag: 1
-    source: build
-
-- name: Tag image with Docker Hub repository name
-  become: true
-  docker_image:
-    name: dz9
-    tag: 1
-    repository: trsverre/dz9
-    push: yes
-    source: local
+  notify: "Update Dockerfile"
