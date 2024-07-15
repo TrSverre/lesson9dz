@@ -5,7 +5,7 @@
 
 - name: Build image
   docker_image:
-    path: {{ dest_folder_git }}
+    path: "{{ dest_folder_git }}"
     name: dz9
     tag: latest
 
