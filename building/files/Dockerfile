@@ -2,7 +2,7 @@ FROM maven:latest as bild
 RUN apt update
 RUN apt install git -y
 WORKDIR /home/user/
-RUN git clone https://github.com/jetty-project/embedded-jetty-live-war
+RUN git clone -b jetty-11.0.x https://github.com/jetty-project/embedded-jetty-live-war
 WORKDIR /home/user/embedded-jetty-live-war
 RUN mvn package
 
