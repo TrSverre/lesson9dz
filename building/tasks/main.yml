@@ -1,11 +1,11 @@
 ---
 # tasks file for building
 - name: Copy Dockerfile into build node
-  copy: src=Dockerfile dest={{ dest_folder }}
+  copy: src=Dockerfile dest={{ dest_folder_git }}
 
 - name: Build image
   docker_image:
-    path: /home/user
+    path: {{ dest_folder_git }}
     name: dz9
     tag: latest
 
