@@ -1,10 +1,10 @@
-FROM ubuntu:18.04 as build
+FROM maven:latest as bild
 RUN apt update
-RUN apt install openjdk-11-jdk -y
-RUN apt install maven -y
 RUN apt install git -y
-RUN git clone https://github.com/yankils/hello-world.git
-RUN cd hello-world/ && mvn package
+WORKDIR /home/user/
+RUN git clone https://github.com/jetty-project/embedded-jetty-live-war
+WORKDIR /home/user/embedded-jetty-live-war
+RUN mvn package
 
 FROM tomcat:9.0.8-jre8-alpine
-COPY --from=build hello-world/webapp/target/webapp.war /usr/local/tomcat/webapps
+COPY --from=bild /home/user/embedded-jetty-live-war/livewar-assembly/target/livewar-example.war /usr/local/tomcat/webapps
