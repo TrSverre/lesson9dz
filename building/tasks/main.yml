@@ -5,9 +5,11 @@
 
 - name: Build image
   docker_image:
-    path: "{{ dest_folder_git }}"
+    build: 
+      path: "{{ dest_folder_git }}"
     name: dz9
     tag: latest
+    source: build
 
 - name: Tag image with Docker Hub repository name
   docker_image:
@@ -15,3 +17,4 @@
     tag: latest
     repository: trsverre/dz9
     push: yes
+    source: local
