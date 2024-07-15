@@ -4,6 +4,7 @@
   copy: src=Dockerfile dest={{ dest_folder_git }}
 
 - name: Build image
+  become: true
   docker_image:
     build: 
       path: "{{ dest_folder_git }}"
@@ -12,6 +13,7 @@
     source: build
 
 - name: Tag image with Docker Hub repository name
+  become: true
   docker_image:
     name: dz9
     tag: latest
